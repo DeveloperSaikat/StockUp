@@ -9,7 +9,7 @@ This WebApp can be used for three purposes:
 - This page highlights all the important business related news taking place from all over the world.\
 I have provided a headline for each such news, and the links that will redirect to their respective sources.
 
-![image](https://user-images.githubusercontent.com/40135714/87764344-d9221c00-c833-11ea-8499-a896de6536d4.png)
+![image](https://user-images.githubusercontent.com/40135714/87766196-66ff0680-c836-11ea-9991-8536d398e0fb.png)
 
 ### Covid Data:
 - All the daily stats are provided in this page. Worldwide coonfirmed, Recovery and Deaths stats are updated on daily basis.
