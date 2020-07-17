@@ -1,4 +1,4 @@
-# StockUp
+# StockUp :arrow_up:
 
 This WebApp can be used for three purposes:
 1. To know about the Latest Global business news.
