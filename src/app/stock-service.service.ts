@@ -24,7 +24,7 @@ export class StockServiceService {
 
 
   liveNews(){
-    this.searchUrl = "https://finnhub.io/api/v1/news?category=general&token=brrm26vrh5ranontaov0"
+    this.searchUrl = "https://finnhub.io/api/v1/news?category=general&token=#"
     return this.http.get(this.searchUrl);
   }
 
@@ -40,27 +40,27 @@ export class StockServiceService {
   }
 
   getCompanies(): Observable<companyData[]>{
-    this.searchUrl = "https://cloud.iexapis.com/stable/ref-data/region/IN/symbols?token=pk_be94950584de42839d9550c273df5c5f"
+    this.searchUrl = "https://cloud.iexapis.com/stable/ref-data/region/IN/symbols?token=#"
     return this.http.get<companyData[]>(this.searchUrl);
   }
 
   compStockPrice(name: string): Observable<stockPrice>{
-    this.searchUrl = "https://cloud.iexapis.com/stable/stock/"+name+"/quote?token=pk_be94950584de42839d9550c273df5c5f"
+    this.searchUrl = "https://cloud.iexapis.com/stable/stock/"+name+"/quote?token=#"
     return this.http.get<stockPrice>(this.searchUrl);
   }
 
   compProfile(symbol: string): Observable<companyProfile>{
-    this.searchUrl = "https://cloud.iexapis.com/stable/stock/"+symbol+"/company?token=pk_be94950584de42839d9550c273df5c5f"
+    this.searchUrl = "https://cloud.iexapis.com/stable/stock/"+symbol+"/company?token=#"
     return this.http.get<companyProfile>(this.searchUrl);
   }
 
   compHistory(symbol: string, period: string){
-    this.searchUrl = "https://cloud.iexapis.com/stable/stock/"+symbol+"/chart/"+period+"?token=pk_be94950584de42839d9550c273df5c5f"
+    this.searchUrl = "https://cloud.iexapis.com/stable/stock/"+symbol+"/chart/"+period+"?token=#"
     return this.http.get(this.searchUrl);
   }
 
   compStats(symbol: string) : Observable<compStats>{
-    this.searchUrl = "https://cloud.iexapis.com/stable/stock/"+symbol+"/stats?token=pk_be94950584de42839d9550c273df5c5f"
+    this.searchUrl = "https://cloud.iexapis.com/stable/stock/"+symbol+"/stats?token=#"
     return this.http.get<compStats>(this.searchUrl);
   }
 
