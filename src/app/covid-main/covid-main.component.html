@@ -1,0 +1,113 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" routerLink="/stock/main">StockUp</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/covid" >Covid</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/stock/search" routerLinkActive="active">Stock</a>
+        </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">All about <strong>COVID-19</strong></h1>
+      <p class="lead">Stay Home and stay <strong>SAFE</strong></p>
+    </div>
+</div>
+
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4">
+          <strong>Global Confirmed : </strong><strong class="confirmed">{{globalConfirmed | number}}</strong> 
+        </div>
+        <div class="col-md-4">
+          <strong>Global Recovered : </strong><strong class="recovered">{{globalRecovered | number}}</strong>  
+        </div>
+        <div class="col-md-4">
+          <strong>Global Deaths : </strong><strong class="deaths">{{globalDeaths | number}}</strong> 
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4">
+          <strong>Confirmed on {{ date | date: 'dd-MM-yyyy'}} : </strong><strong class="confirmed">{{newGlobalConfirmed | number}}</strong>
+        </div>
+        <div class="col-md-4">
+          <strong>Recovered on {{ date | date: 'dd-MM-yyyy'}} : </strong><strong class="recovered">{{newGlobalRecovered | number}}</strong>
+        </div>
+        <div class="col-md-4">
+          <strong>Deaths on {{ date | date: 'dd-MM-yyyy'}} : </strong><strong class="deaths">{{newGlobalDeaths | number}}</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Country</th>
+          <th scope="col">Confirmed</th>
+          <th scope="col">Recovered</th>
+          <th scope="col">Deaths</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor = 'let data of covidResult | slice: startIndex: endIndex'>
+          <td data-toggle="modal" data-target="#exampleModal" (click)="consoleLook(data)"><strong>{{data.Country}}</strong></td>
+          <td class="confirmed">{{data.TotalConfirmed | number}}</td>
+          <td class="recovered">{{data.TotalRecovered | number}}</td>
+          <td class="deaths">{{data.TotalDeath | number}}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+        <li *ngFor="let i of getArrayFromNumber(covidResult.length); let in = index" class="page-item">
+          <a class="page-link" (click)="updateIndex(in)">{{in+1}}</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+      </ul>
+    </nav> 
+   
+  </div>
+  <div class="modal" tabindex="-1" role="dialog" id="exampleModal">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{name}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <label class="confirmed"><strong>Confirmed</strong>: {{confirmed}}</label>
+            <label class="recovered"><strong>Recovered</strong>: {{recovered}}</label>
+            <label class="deaths"><strong>Deaths</strong>: {{deaths}}</label>
+            <label class="confirmed"><strong>Recovery Rate</strong>: {{rate | number: '1.2-2'}} %</label>
+          </div>
+          <div *ngIf="chartOfMarksInAYear" style="height: 450px;">
+            <canvas id="canvasMarks">{{ chartOfMarksInAYear }}</canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

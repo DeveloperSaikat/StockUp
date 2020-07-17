@@ -1,0 +1,12 @@
+.jumbotron{
+    background-image: linear-gradient(blue,white);
+}
+.card{
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 50px; /* Added */
+    width: 68rem;
+}
+.pagination{
+    margin-left: 10px;
+}

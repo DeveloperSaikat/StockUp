@@ -1,0 +1,79 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" routerLink="/stock/main">StockUp</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/covid">Covid</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="/stock/search">Stock</a>
+          </li>
+      </ul>
+    </div>
+</nav>
+
+<div class="container">
+  <p class="header"><strong>Stock Price: </strong>{{data.companyName}}</p>
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <p class="shift"><strong>Current Price:</strong> {{currentPrice}}</p>
+        <p class="shift"><strong>Previous Close:</strong> {{previousPrice}}</p>
+        <p class="shift"><strong>Return:</strong> {{returns | number: '1.2-2'}}%</p>
+        <select name="period" id="period" class="shift" [(ngModel)]="period" (ngModelChange)="fetchChart()">
+            <option value="5D">5D</option>
+            <option value="1M">1M</option>
+            <option value="6M">6M</option>
+            <option value="1Y">1Y</option>
+            <option value="5Y">5Y</option>
+            <option value="Max">Max</option>
+        </select>
+      </div>
+      <div style="height: 450px;">
+        <canvas id="canvasStock"></canvas>
+      </div>
+    </div>
+  </div>
+  <br>
+  <p class="header"><strong>Company Profile</strong></p> 
+  <div class="card">
+    <div class="card-body">
+      <p class="company">{{data.companyName}}</p>
+      <p><strong class="price">{{data.latestPrice}}</strong><strong [style.color] = "negative ? 'red' : 'green'"> {{data.change}} ({{changePer | number: '1.2-2'}}%)</strong></p>
+      <p><strong>Previous Close: </strong>{{data.previousClose}}</p>
+      <p><strong>CEO:</strong> {{profile.CEO}}</p>
+      <p><strong>Company website: </strong><a href="{{profile.website}}">{{profile.website}}</a></p>
+      <p><strong>Description:</strong> {{profile.description}}</p>
+      <p><strong>Industry:</strong> {{profile.industry}}</p>
+      <p><strong>Sector:</strong> {{profile.sector}}</p>
+    </div>
+  </div>
+  <br>
+  <p class="header"><strong>Basics</strong></p>
+  <div class="card card-last">
+    <div class="card-body">
+      <div class="row">
+        <p class="col-md-4"><strong>52 Week High: </strong>{{stats.week52high}}</p>
+        <p class="col-md-4"><strong>52 Week Low: </strong>{{stats.week52low}}</p>
+      </div>
+      <div class="row">
+        <p class="col-md-4"><strong>200 Day Moving Average: </strong>{{stats.day200MovingAvg}}</p>
+        <p class="col-md-4"><strong>50 Day Moving Average: </strong>{{stats.day50MovingAvg}}</p>
+      </div>
+      <div class="row">
+        <p class="col-md-4"><strong>1 Month Change: </strong>{{oneMonth | number: '1.2-2'}}%</p>
+        <p class="col-md-4"><strong>3 Month Change: </strong>{{threeMonth | number: '1.2-2'}}%</p>
+        <p class="col-md-4"><strong>6 Month Change: </strong>{{sixMonth | number: '1.2-2'}}%</p>
+      </div>
+      <div class="row">
+        <p class="col-md-4"><strong>1 Year Change: </strong>{{oneYear | number: '1.2-2'}}%</p>
+        <p class="col-md-4"><strong>5 Year Change: </strong>{{fiveYear | number: '1.2-2'}}%</p>
+      </div>
+    </div>
+  </div>
+</div>
+

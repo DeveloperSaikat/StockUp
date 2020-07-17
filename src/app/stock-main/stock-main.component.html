@@ -1,0 +1,20 @@
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Let's plan our <strong>Investments</strong></h1>
+      <p class="lead">Why buy some premium subscription when we can provide you all services.. for <strong>FREE</strong></p>
+    </div>
+</div>
+
+<h1 class="display-4" style="text-align: center;">Global News</h1><br><br>
+<div class="album-container">
+  <div class="row justify-content-center">
+    <div class="card col-md-4 shadow" *ngFor="let studs of newsResult">
+        <img class="card-img-top" [style.height.px]="250" src="{{studs.image}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{studs.headline}}</h5>
+          <p class="card-text">Source: <b>{{studs.source}}</b></p>
+          <a href="{{studs.url}}">Full Story</a>
+        </div>
+      </div>
+  </div> 
