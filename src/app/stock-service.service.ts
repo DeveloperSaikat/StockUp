@@ -35,7 +35,7 @@ export class StockServiceService {
 
   covidCountry(country:string){
     this.searchUrl = "https://api.covid19api.com/total/country/"+country+
-    "/status/confirmed?from=2020-03-01T00:00:00Z&to=2020-07-04T00:00:00Z";
+    "/status/confirmed?from=2020-03-01T00:00:00Z&to=2020-07-16T00:00:00Z";
     return this.http.get(this.searchUrl, httpOptions);
   }
 
