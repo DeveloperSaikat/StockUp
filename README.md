@@ -1,4 +1,5 @@
 # StockUp :arrow_up:
+-**Data Source : IEXCloud API**
 
 This WebApp can be used for three purposes:
 1. To know about the Latest Global business news.
